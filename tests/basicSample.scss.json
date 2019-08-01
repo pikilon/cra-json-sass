@@ -1,0 +1,17 @@
+{
+  "block": "Button",
+  "text": "Button__text",
+  "nested": {
+    "color": 3,
+    "re-nested": {
+      "last-value": null
+    }
+  },
+  "array": [
+    "blue",
+    {
+      "background-color": "red",
+      "font-size": "1rem"
+    }
+  ]
+}
