@@ -7,17 +7,16 @@ const sassParser = (json, level = 0, isLast = false, indent = '') => {
   const isSimpleOrFalsy = SIMPLE_TYPES.indexOf(typeof json) >= 0 || !json
   if (isSimpleOrFalsy) return json;
   const rootSuffix = ';'
-  const nestedSuffix = ','
+  let finalIndent = ''
+  const nestedSuffix = ',\n'
   const isRootLevel = level < 2;
   const isDeepLevel = level >= 1;
 
   let prefix = '$'
   let suffix = rootSuffix
-  let finalIndent = ''
   if (isDeepLevel) {
-    prefix = ''
-    let levelIndent = 0;
     finalIndent = indent + TAB
+    prefix = finalIndent
     suffix = nestedSuffix
   }
 
@@ -29,11 +28,11 @@ const sassParser = (json, level = 0, isLast = false, indent = '') => {
       return result
     })
 
-    let joinedLines = lines.join(`${suffix}\n${finalIndent}`)
-    let suffixObject = isRootLevel ? rootSuffix : nestedSuffix;
-    if (isLast && !isRootLevel) suffixObject = ''
+    let joinedLines = lines.join(suffix)
+    // let suffixObject = isRootLevel ? rootSuffix : nestedSuffix;
+    // if (isLast && !isRootLevel) suffixObject = ''
 
-    if (isDeepLevel) joinedLines = `(\n${finalIndent}${joinedLines}\n${indent})${suffixObject}`
+    if (isDeepLevel) joinedLines = `(\n${finalIndent}${joinedLines}\n${indent})`
 
     return joinedLines;
   }
