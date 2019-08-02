@@ -7,5 +7,13 @@
   "license": "MIT",
   "dependencies": {
     "chokidar": "^3.0.2"
+  },
+  "bin": {
+    "cra-json-sass-watch": "./bins/cra-json-sass-watch.js",
+    "cra-json-sass-build": "./bins/cra-json-sass-build.js"
+  },
+  "scripts": {
+    "test-watch": "node ./bins/cra-json-sass-watch.js",
+    "test-build": "node ./bins/cra-json-sass-build.js"
   }
 }

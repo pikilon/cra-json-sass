@@ -3,8 +3,8 @@ const path = require('path')
 const sassParser = require('./sassParser')
 const chokidar = require('chokidar');
 
-const fileProcessor = (folder = 'src', persistent = true, extension = '.scss.json') => {
-  const finalPath = `${folder}/**/*${extension}`
+module.exports = (folder = 'src', persistent = true, fileExtension = '.scss.json') => {
+  const finalPath = `${folder}/**/*${fileExtension}`
   const watcherOptions = {
     persistent,
   }
