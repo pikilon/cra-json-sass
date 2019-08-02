@@ -1,15 +1,15 @@
 $block: Button;
 $text: Button__text;
 $nested: (
- color: 3,
- re-nested: (
-  last-value: null
- )
-);;
+  color: 3,
+  re-nested: (
+   last-value: miau
+  )
+ );
 $array: (
- 0: blue,
- 1: (
-  background-color: red,
-  font-size: 1rem
- )
-);
+  0: blue,
+  1: (
+   background-color: red,
+   font-size: 1rem
+  )
+ );

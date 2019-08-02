@@ -6,36 +6,21 @@ const sassParser = (json, level = 0, isLast = false, indent = '') => {
   if (typeof json === 'function') return 'THE FUNCTIONS ARE NOT ALLOWED'
   const isSimpleOrFalsy = SIMPLE_TYPES.indexOf(typeof json) >= 0 || !json
   if (isSimpleOrFalsy) return json;
-  const rootSuffix = ';'
-  let finalIndent = ''
-  const nestedSuffix = ',\n'
-  const isRootLevel = level < 2;
+
+  //is Object
+  const finalIndent = indent + TAB
   const isDeepLevel = level >= 1;
+  const joinerString = isDeepLevel ? `,\n${finalIndent}` : ';\n$'
+  const arrayToIterate = Object.keys(json);
 
-  let prefix = '$'
-  let suffix = rootSuffix
-  if (isDeepLevel) {
-    finalIndent = indent + TAB
-    prefix = finalIndent
-    suffix = nestedSuffix
-  }
+  const lines = arrayToIterate.map((key, index) => {
+    const isLastElement = (index + 1) === arrayToIterate.length
+    return `${key}: ${sassParser(json[key], level + 1, isLastElement, finalIndent)}`
+  })
 
-  if (typeof json === 'object') {
-    const arrayToIterate = Object.keys(json);
-    const lines = arrayToIterate.map((key, index) => {
-      const isLastElement = (index + 1) === arrayToIterate.length
-      const result = `${prefix}${key}: ${sassParser(json[key], level + 1, isLastElement, finalIndent)}`
-      return result
-    })
-
-    let joinedLines = lines.join(suffix)
-    // let suffixObject = isRootLevel ? rootSuffix : nestedSuffix;
-    // if (isLast && !isRootLevel) suffixObject = ''
-
-    if (isDeepLevel) joinedLines = `(\n${finalIndent}${joinedLines}\n${indent})`
-
-    return joinedLines;
-  }
+  const joinedLines = lines.join(joinerString)
+  const result = isDeepLevel ? `(\n${finalIndent}${joinedLines}\n${indent})` : `$${joinedLines};\n`
+  return result;
 }
 
 module.exports = sassParser

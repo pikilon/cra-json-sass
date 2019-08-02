@@ -4,5 +4,9 @@
   "description": "a file conversor from json to sass",
   "main": "index.js",
   "author": "Francisco Gutiérrez sarazá",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.0.2",
+    "node-watch": "^0.6.2"
+  }
 }
