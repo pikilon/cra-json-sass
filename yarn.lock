@@ -80,11 +80,6 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
-node-watch@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/node-watch/-/node-watch-0.6.2.tgz#48fd517b527ec21ac4f5f981aad2a6ddebc0131c"
-  integrity sha512-qmb/2ehVk1DC4gZYox7JgWXNucKnVk7uQmcoSeRaC7kzXsT8VOPIe7mbrR9Vc2TpGggS2yGUcgC98A2fKE53AA==
-
 normalize-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"

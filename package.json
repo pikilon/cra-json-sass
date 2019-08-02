@@ -6,7 +6,6 @@
   "author": "Francisco Gutiérrez sarazá",
   "license": "MIT",
   "dependencies": {
-    "chokidar": "^3.0.2",
-    "node-watch": "^0.6.2"
+    "chokidar": "^3.0.2"
   }
 }
