@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Francisco Gutiérrez sarazá",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pikilon/cra-json-sass.git"
+  },
   "dependencies": {
     "chokidar": "^3.0.2"
   },
