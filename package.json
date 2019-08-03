@@ -1,6 +1,6 @@
 {
   "name": "cra-json-sass",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a file conversor from json to sass",
   "main": "index.js",
   "author": "Francisco Gutiérrez sarazá",
