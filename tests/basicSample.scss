@@ -3,10 +3,11 @@ $Button__text: Button__text;
 $Button--primary: Button--primary;
 $isActive: is-active;
 $animationSpeed: 0.2;
+$backgroundColor: green;
 $nested: (
-  color: 3,
+  color: red,
   re-nested: (
-   last-value: miau
+   last-value: orange
   )
  );
 $array: (
