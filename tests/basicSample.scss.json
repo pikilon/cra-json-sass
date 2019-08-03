@@ -1,6 +1,13 @@
 {
-  "block": "Button",
-  "text": "Button__text",
+  "BEM": {
+    "Button": {
+      "Button": "Button",
+      "text": "__text",
+      "primary": "--primary"
+    }
+  },
+  "isActive": "is-active",
+  "animationSpeed" : 0.2,
   "nested": {
     "color": 3,
     "re-nested": {

@@ -1,6 +1,6 @@
 {
   "name": "cra-json-sass",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "a file conversor from json to sass",
   "main": "index.js",
   "author": "Francisco Gutiérrez sarazá",
@@ -13,7 +13,7 @@
     "cra-json-sass-build": "./bins/cra-json-sass-build.js"
   },
   "scripts": {
-    "test-watch": "node ./bins/cra-json-sass-watch.js",
-    "test-build": "node ./bins/cra-json-sass-build.js"
+    "test-watch": "./bins/cra-json-sass-watch.js",
+    "test-build": "./bins/cra-json-sass-build.js"
   }
 }
