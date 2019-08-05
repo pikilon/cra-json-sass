@@ -25,7 +25,7 @@ yarn add -D cra-json-sass
 
 ## Config
 
-You can config the default values by creating a `config-cra-json-config.json` file in your package root folder:
+You can config the default values by creating a `config-cra-json-sass.json` file in your package root folder:
 
 This are the default values
 
