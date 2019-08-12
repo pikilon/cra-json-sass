@@ -1,8 +1,7 @@
 import fs from 'fs'
-// const fs = require('fs');
-const path = require('path')
+import path from 'path'
+import chokidar = require('chokidar');
 const sassParser = require('./sassParser')
-const chokidar = require('chokidar');
 
 module.exports = (folder = 'src', persistent = true, fileExtension = '.scss.json') => {
   const finalPath = `${folder}/**/*${fileExtension}`

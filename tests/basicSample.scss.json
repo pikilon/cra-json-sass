@@ -1,7 +1,6 @@
 {
   "BEM": {
     "Button": {
-      "Button": "Button",
       "text": "__text",
       "primary": "--primary"
     }
