@@ -9,15 +9,35 @@
     "type": "git",
     "url": "https://github.com/pikilon/cra-json-sass.git"
   },
-  "dependencies": {
-    "chokidar": "^3.0.2"
-  },
   "bin": {
     "cra-json-sass-watch": "./bins/cra-json-sass-watch.js",
     "cra-json-sass-build": "./bins/cra-json-sass-build.js"
   },
   "scripts": {
     "test-watch": "./bins/cra-json-sass-watch.js",
-    "test-build": "./bins/cra-json-sass-build.js"
+    "test-build": "./bins/cra-json-sass-build.js",
+    "clean": "rimraf coverage build tmp",
+    "build": "tsc -p tsconfig.release.json",
+    "build:watch": "tsc -w -p tsconfig.release.json",
+    "lint": "tslint -t stylish --project \"tsconfig.json\"",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "chokidar": "^3.0.2",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.1",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "tsutils": "^3.17.1",
+    "typescript": "^3.5.3"
   }
 }
