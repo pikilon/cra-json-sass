@@ -1,34 +1,14 @@
 "use strict";
-const bemParser = (jsonObject = {}) => {
-    const isObject = typeof jsonObject === 'object';
-    const jsonKeys = isObject ? Object.keys(jsonObject) : [];
-    if (!isObject || !jsonKeys.length)
-        return 'BEM: SHOULD BE AN OBJECT WITH LENGTH';
+Object.defineProperty(exports, "__esModule", { value: true });
+const concatenateBem_1 = require("./concatenateBem");
+exports.bemParser = (jsonObject) => {
     const stringArray = [];
-    const arrayStrings = Object.keys(jsonObject).map(bemKey => {
-        const block = jsonObject[bemKey];
-        const isBlockObject = typeof block === 'object';
-        if (!isBlockObject) {
-            stringArray.push(`${bemKey}: ALL BEM CHILDREN SHOULD BE OBJECT (BLOCKS)`);
-        }
-        else {
-            const blockElementsKeys = Object.keys(block);
-            blockElementsKeys.forEach(blockKey => {
-                const value = block[blockKey];
-                let resultString;
-                if (typeof value !== 'string')
-                    resultString = `${blockKey}: ALL BEM GRANDCHILDREN SHOULD BE STRING`;
-                if (!resultString && blockKey === bemKey)
-                    resultString = `${blockKey}: ${blockKey}`;
-                if (!resultString) {
-                    const chainedName = bemKey + value;
-                    resultString = `${chainedName}: ${chainedName}`;
-                }
-                stringArray.push(resultString);
-            });
-        }
+    const concatenatedValues = concatenateBem_1.concatenateBem(jsonObject);
+    Object.keys(concatenatedValues).forEach(blockKey => {
+        const currentBlock = concatenatedValues[blockKey];
+        const blockValues = Object.keys(currentBlock).map(elementKey => currentBlock[elementKey]);
+        blockValues.forEach(val => stringArray.push(`${val}: ${val}`));
     });
     return stringArray.join(';\n$');
 };
-module.exports = bemParser;
 //# sourceMappingURL=bemParser.js.map

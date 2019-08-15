@@ -1,13 +1,13 @@
-const fs = require('fs');
-const defaultConfig = require('../default-config.json')
+import fs from 'fs'
+import defaultConfig from '../default-config.json'
 
-module.exports = () => {
+export default () => {
 const CONFIG_JSON_PATHNAME = './config-cra-json-sass.json'
   let args = defaultConfig
 
   if (fs.existsSync(CONFIG_JSON_PATHNAME)) {
     try {
-      const rawdata = fs.readFileSync(CONFIG_JSON_PATHNAME)
+      const rawdata = fs.readFileSync(CONFIG_JSON_PATHNAME, 'utf8')
       const jsonData = JSON.parse(rawdata)
       args = { ...args, ...jsonData }
     } catch (error) {

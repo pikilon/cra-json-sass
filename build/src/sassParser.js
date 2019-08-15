@@ -1,28 +1,27 @@
 "use strict";
-const bemParser = require('./bemParser');
+Object.defineProperty(exports, "__esModule", { value: true });
+const bemParser_1 = require("./bemParser");
+exports.BEM_INDEX = 'BEM';
 const TAB = ' ';
 const SIMPLE_TYPES = ['string', 'number', 'boolean'];
-const BEM_INDEX = 'BEM';
-const sassParser = (json, level = 0, isLast = false, indent = '') => {
-    if (typeof json === 'function')
-        return 'THE FUNCTIONS ARE NOT ALLOWED';
-    const isSimpleOrFalsy = SIMPLE_TYPES.indexOf(typeof json) >= 0 || !json;
+exports.sassParser = (json, level = 0, indent = '') => {
+    const isSimpleOrFalsy = SIMPLE_TYPES.indexOf(typeof json) >= 0;
     if (isSimpleOrFalsy)
         return json;
     const finalIndent = indent + TAB;
     const isDeepLevel = level >= 1;
     const joinerString = isDeepLevel ? `,\n${finalIndent}` : ';\n$';
     const arrayToIterate = Object.keys(json);
-    const lines = arrayToIterate.map((key, index) => {
-        const isBEM = (!isDeepLevel && key === BEM_INDEX);
+    const isArray = Array.isArray(json);
+    const lines = arrayToIterate.map(key => {
+        const isBEM = (!isDeepLevel && key === exports.BEM_INDEX);
         const value = json[key];
-        const isLastElement = (index + 1) === arrayToIterate.length;
-        const resultString = isBEM ? bemParser(value) : `${key}: ${sassParser(json[key], level + 1, isLastElement, finalIndent)}`;
+        const prefixKey = isArray ? '' : `${key}: `;
+        const resultString = isBEM ? bemParser_1.bemParser(value) : prefixKey + exports.sassParser(value, level + 1, finalIndent);
         return resultString;
     });
     const joinedLines = lines.join(joinerString);
     const result = isDeepLevel ? `(\n${finalIndent}${joinedLines}\n${indent})` : `$${joinedLines};\n`;
     return result;
 };
-module.exports = sassParser;
 //# sourceMappingURL=sassParser.js.map

@@ -1,4 +1,7 @@
-$Button: Button;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sass Parser match snapshot 1`] = `
+"$Button: Button;
 $Button__text: Button__text;
 $Button--primary: Button--primary;
 $isActive: is-active;
@@ -17,3 +20,5 @@ $array: (
    font-size: 1rem
   )
  );
+"
+`;

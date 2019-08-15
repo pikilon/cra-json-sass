@@ -1,31 +1,33 @@
 "use strict";
-const fs = require('fs');
-const path = require('path');
-const sassParser = require('./sassParser');
-const chokidar = require('chokidar');
-module.exports = (folder = 'src', persistent = true, fileExtension = '.scss.json') => {
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const fs_1 = tslib_1.__importDefault(require("fs"));
+const path_1 = tslib_1.__importDefault(require("path"));
+const chokidar_1 = tslib_1.__importDefault(require("chokidar"));
+const sassParser_1 = require("./sassParser");
+exports.default = (folder = 'src', persistent = true, fileExtension = '.scss.json') => {
     const finalPath = `${folder}/**/*${fileExtension}`;
     const watcherOptions = {
         persistent,
     };
-    const watcher = chokidar.watch(finalPath, watcherOptions);
+    const watcher = chokidar_1.default.watch(finalPath, watcherOptions);
     watcher.on('all', (event, filepath) => {
         const supportedMethods = ['add', 'change', 'unlink'];
         const isEventSupported = supportedMethods.indexOf(event) >= 0;
         if (isEventSupported) {
             try {
-                const fileExtensionPosition = filepath.lastIndexOf(path.extname(filepath));
+                const fileExtensionPosition = filepath.lastIndexOf(path_1.default.extname(filepath));
                 const targetFileName = filepath.substr(0, fileExtensionPosition);
-                const shouldDeleteGeneratedFile = (event === 'unlink' && fs.existsSync(targetFileName));
+                const shouldDeleteGeneratedFile = (event === 'unlink' && fs_1.default.existsSync(targetFileName));
                 if (shouldDeleteGeneratedFile) {
-                    fs.unlinkSync(targetFileName);
+                    fs_1.default.unlinkSync(targetFileName);
                     console.log(`${targetFileName} was removed`);
                     return;
                 }
-                const rawdata = fs.readFileSync(filepath);
+                const rawdata = fs_1.default.readFileSync(filepath, 'utf8');
                 const json = JSON.parse(rawdata);
-                const sassContent = sassParser(json);
-                fs.writeFileSync(targetFileName, sassContent);
+                const sassContent = sassParser_1.sassParser(json);
+                fs_1.default.writeFileSync(targetFileName, sassContent);
                 console.log(`"${filepath}" was succesful updated`);
             }
             catch (error) {

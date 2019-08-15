@@ -1,8 +1,8 @@
-import { concatenateBem } from './concatenateBem'
+import { concatenateBem, BLOCK_KEY } from './concatenateBem'
 
 const TEST_BLOCK = 'Button'
 
-const BEMexample: BemDictionaryType = {
+const BEMexample: JsonType = {
   [TEST_BLOCK]: {
     text: "__text",
     icon: "__icon",
@@ -16,14 +16,15 @@ describe('Concatenate bem', () => {
   const resultBlock = result[TEST_BLOCK]
   const testingBlock = BEMexample[TEST_BLOCK]
   const exampleKeys = Object.keys(testingBlock)
+  const block = resultBlock[BLOCK_KEY];
 
   it(`should have an ${TEST_BLOCK} element`, () => {
-    expect(resultBlock.block).toEqual(TEST_BLOCK)
+    expect(block).toEqual(TEST_BLOCK)
   })
 
   exampleKeys.forEach(blockKey => {
-    const elementResult = resultBlock.block + testingBlock[blockKey]
-    it(`It should concatenate a ${resultBlock.block} + ${testingBlock[blockKey]}`, () => {
+    const elementResult = block + testingBlock[blockKey]
+    it(`It should concatenate a ${block} + ${testingBlock[blockKey]}`, () => {
       expect(resultBlock[blockKey]).toEqual(elementResult)
     })
 

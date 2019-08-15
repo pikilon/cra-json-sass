@@ -1,9 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import chokidar = require('chokidar');
-const sassParser = require('./sassParser')
+import chokidar from 'chokidar'
+import { sassParser } from './sassParser'
 
-module.exports = (folder = 'src', persistent = true, fileExtension = '.scss.json') => {
+
+export default (folder = 'src', persistent = true, fileExtension = '.scss.json') => {
   const finalPath = `${folder}/**/*${fileExtension}`
   const watcherOptions = {
     persistent,
@@ -22,7 +23,7 @@ module.exports = (folder = 'src', persistent = true, fileExtension = '.scss.json
         console.log(`${targetFileName} was removed`);
         return
       }
-      const rawdata = fs.readFileSync(filepath)
+      const rawdata = fs.readFileSync(filepath, 'utf8')
       const json = JSON.parse(rawdata)
       const sassContent = sassParser(json)
       fs.writeFileSync(targetFileName, sassContent)

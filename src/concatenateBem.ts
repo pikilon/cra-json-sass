@@ -1,9 +1,11 @@
-export const concatenateBem = (Bem: BemDictionaryType): BemDictionaryType => {
-  const result: BemDictionaryType = {}
+export const BLOCK_KEY = 'block'
+
+export const concatenateBem = (Bem: JsonType): JsonType => {
+  const result: JsonType = {}
   const blockKeys: Array<string> = Object.keys(Bem);
 
   blockKeys.forEach(blockKey => {
-    const blockResult: BemElementType = { block: blockKey }
+    const blockResult: JsonType = { [BLOCK_KEY]: blockKey }
     const blockValue = Bem[blockKey];
     const elementKeys: Array<string> = Object.keys(blockValue)
 

@@ -1,11 +1,13 @@
 import { concatenateBem } from './concatenateBem'
 
-export const bemParser = (jsonObject: BemDictionaryType) => {
+export const bemParser = (jsonObject: JsonType) => {
 
   const stringArray = []
   const concatenatedValues = concatenateBem(jsonObject)
   Object.keys(concatenatedValues).forEach(blockKey => {
-    Object.values(concatenatedValues[blockKey]).forEach(val => stringArray.push(`${val}: ${val}`))
+    const currentBlock = concatenatedValues[blockKey]
+    const blockValues = Object.keys(currentBlock).map(elementKey => currentBlock[elementKey])
+    blockValues.forEach(val => stringArray.push(`${val}: ${val}`))
   })
 
   return stringArray.join(';\n$')
