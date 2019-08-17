@@ -124,7 +124,7 @@ setTimeOut(
 ```scss
 @import "./shared"; //you don't need any extension
 
-.#{$Button} {
+.#{$block} {
   background-color: $backgroundColor;
   transition: all #{$animationSpeed}s;
   color: map-get($nested, color); // red
@@ -132,7 +132,7 @@ setTimeOut(
   &.#{$isActive} { // .Button.is-active
     color: map-get(map-get($nested, re-nested),last-value) // orange
   }
-.#{$Button__text} {
+.#{$text} {
   display: flex;
 }
 
