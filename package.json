@@ -15,8 +15,8 @@
     "cra-json-sass-build": "./bins/cra-json-sass-build.js"
   },
   "scripts": {
-    "test-watch": "./bins/cra-json-sass-watch.js",
-    "test-build": "./bins/cra-json-sass-build.js",
+    "test-watch": "node ./bins/cra-json-sass-watch.js",
+    "test-build": "node ./bins/cra-json-sass-build.js",
     "clean": "rimraf coverage build tmp",
     "build": "rm -rf build && tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.17",
-    "@types/node": "^12.7.1",
+    "@types/node": "^12.7.2",
+    "embedme": "^1.17.1",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",

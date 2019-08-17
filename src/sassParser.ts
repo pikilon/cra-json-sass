@@ -1,6 +1,3 @@
-import { bemParser } from './bemParser'
-
-export const BEM_INDEX = 'BEM';
 const TAB = ' ';
 const SIMPLE_TYPES = ['string', 'number', 'boolean']
 
@@ -15,12 +12,10 @@ export const sassParser = (json: JsonType, level = 0, indent = '') => {
   const arrayToIterate = Object.keys(json)
   const isArray = Array.isArray(json)
 
-
   const lines = arrayToIterate.map(key => {
-    const isBEM = (!isDeepLevel && key === BEM_INDEX)
     const value = json[key] as JsonType
     const prefixKey = isArray ? '' : `${key}: `
-    const resultString = isBEM ? bemParser(value) : prefixKey + sassParser(value, level + 1, finalIndent)
+    const resultString = prefixKey + sassParser(value, level + 1, finalIndent)
     return resultString
   })
 
