@@ -1,6 +1,6 @@
 {
   "name": "cra-json-sass",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "a file conversor from json to sass",
   "types": "./src/index.d.ts",
   "author": "Francisco Gutiérrez sarazá",
@@ -9,6 +9,17 @@
     "type": "git",
     "url": "https://github.com/pikilon/cra-json-sass.git"
   },
+  "keywords": [
+    "create react app",
+    "json",
+    "sass",
+    "scss",
+    "cra",
+    "watch",
+    "test",
+    "selectors",
+    "shared"
+  ],
   "bin": {
     "cra-json-sass-watch": "./bins/cra-json-sass-watch.js",
     "cra-json-sass-build": "./bins/cra-json-sass-build.js"
