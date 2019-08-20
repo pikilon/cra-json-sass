@@ -1,9 +1,8 @@
 {
   "name": "cra-json-sass",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "a file conversor from json to sass",
-  "main": "./build/src/index.js",
-  "types": "./src/main.d.ts",
+  "types": "./src/index.d.ts",
   "author": "Francisco Gutiérrez sarazá",
   "license": "MIT",
   "repository": {
