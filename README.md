@@ -11,7 +11,7 @@ This will translate even very nested `arrays` and `objects`;
 
 > It is also useful for [testing](#testing-component) or creating full application selectors maps.
 
-![Code Diagram](./cra-json-sass.svg)
+![Code Diagram](https://github.com/pikilon/cra-json-sass/raw/master/cra-json-sass.svg?sanitize=true)
 
 ## Instalation
 
